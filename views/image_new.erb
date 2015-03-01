@@ -1,0 +1,13 @@
+<h1>Upload image</h1>
+
+<form action="/image" method="post" enctype="multipart/form-data">
+    <ul class="errors">
+        <% errors.each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+    <label for="image">Image</label>
+    <input id="image" type="file" name="image">
+    <%= erb :"partials/image_form_elements", :locals => { image: image }, :layout => false %>
+    <input type="submit" value="Upload image">
+</form>

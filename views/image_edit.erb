@@ -1,0 +1,24 @@
+<h1>Edit image</h1>
+
+<div id="full_image">
+    <a href="<%= image["full"] %>">
+        <img src="<%= image["full"] %>">
+    </a>
+</div>
+
+<form action="/image/<%= image["id"] %>" method="post">
+    <%= erb :"partials/image_form_elements", :locals => { image: image }, :layout => false %>
+
+    <input type="hidden" name="_method" value="PUT">
+    <input type="submit" value="Update image">
+</form>
+
+<form action="/image/<%= image["id"] %>" method="post">
+    <input type="hidden" name="csrf" value="<%= csrf %>">
+    <input type="hidden" name="_method" value="DELETE">
+    <input class="danger" type="submit" value="DELETE">
+</form>
+
+<script type="text/javascript">
+    
+</script>

@@ -1,0 +1,34 @@
+<h1>Images</h1>
+
+<form type="search" action="/images" method="get">
+    <label>Search by tag
+        <input type="text" name="tag">
+        <input type="submit" value="Search">
+    </label>
+</form>
+
+<ul id="images">
+    <% if images.empty? %>
+        <li>No images</li>
+    <% end %>
+
+    <% images.each do |image| %>
+        <li class="image_preview">
+            <a href="/image/<%= image["id"] %>">
+                <img src="<%= image["thumb"] %>">
+            </a>
+
+            <div class="meta">
+                <a href="/image/<%= image["id"] %>">
+                    <span><%= image["title"] %></span>
+                </a>
+
+                <ul class="tags">
+                    <% image["tags"].each do |tag| %>
+                        <li><%= tag %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </li>
+    <% end %>
+</ul>
